@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:10-alpine
+    ports:
+      - "5432-5432"
+
+    environment:
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: hello
+      POSTGRES_DB: demo
+    
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8000:8080
+
